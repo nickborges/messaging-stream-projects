@@ -1,0 +1,47 @@
+server:
+  port: 8081
+
+queue:
+  primeiraFila: fila.primeiraFila
+topic:
+  primeiroTopico: topico.primeiroTopico
+
+spring:
+  # Embedded ActiveMQ Configuration Example
+  activemq:
+    user:
+    password:
+    broker-url: tcp://localhost:61616
+    in-memory: true
+    non-blocking-redelivery: true
+    packages:
+      trust-all: false
+      trusted: br.com.activemq.integration.consumer
+    pool:
+      block-if-full: true
+      block-if-full-timeout: -1
+      #create-connection-on-startup: true
+      enabled: false
+      #expiry-timeout: 0
+      idle-timeout: 30000
+      max-connections: 1
+      #maximum-active-session-per-connection: 500
+      #reconnect-on-exception: true
+      time-between-expiration-check: -1
+      use-anonymous-producers: true
+
+  # Spring JMS Settings
+  jms:
+    listener:
+      acknowledge-mode: auto
+      auto-startup: true
+      concurrency: 1
+      max-concurrency: 1
+    pub-sub-domain: true
+    template:
+      #default-destination:
+      #delivery-mode: non_persistent
+      priority: 100
+      qos-enabled: true
+      #receive-timeout: 1000
+      #time-to-live: 36000

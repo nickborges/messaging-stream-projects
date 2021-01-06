@@ -10,5 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>activemq</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>activemq-integration-consumer-queue</module>
+        <module>activemq-integration-consumer-topic</module>
+        <module>activemq-integration-producer</module>
+    </modules>
 
 </project>
