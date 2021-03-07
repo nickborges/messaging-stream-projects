@@ -15,7 +15,7 @@
   * **Client** camada que permite aplicativos e microserviços de lêr, gravar e processar fluxos de eventos em paralelo em escala tolerando falhas.
 * **Principais conceitos**
   * **Event** registra o fato de que "algo aconteceu", também é chamado de **record** ou **message**.
-  * Ao ler ou gravar dados no Kafka, você o faz na forma de **eventos**. Um evento possui uma **chave**, um **valor**, um **carimbo de data/hora** e **cabeçalhos de metadados** opcionail. Exemplo:    
+  * Ao ler ou gravar dados no Kafka, voEvent Sourcing, Event Collaboration, CQRScê o faz na forma de **eventos**. Um evento possui uma **chave**, um **valor**, um **carimbo de data/hora** e **cabeçalhos de metadados** opcionail. Exemplo:
     * Event key: "Fulano"
     * Event value: "Realizou um pagamento"
     * Event timestamp: "Jun. 25, 2020 at 2:06 p.m."
@@ -23,7 +23,7 @@
   * **Consumers** são as aplicações clientes que lêem**(subscribe)** os eventos no Kafka.
   * **Rebalanceamento:** 
     * Os Consumers são capazes de fazer um rebalanceamente, caso alguma de suas instâncias fique indisponível as outras instâncias farão o rebalanceamneto distribuíndo as partições do Tópico entre elas.
-      * Exemplo: 1 Tópico com 3 parições e 3 instâncias de um mesmo Consumer apontando para este Tópico, cadas instâncis do Consumer vai apontar para uma partição do Tópico, mas se cair uma instância do Consumer ele vai ficar com 2 instâncias e nessa hora acontece o rebalancemento onde uma das instâncias vai apontar para duas partições e a outra instância para uma partição do Tópico(3 partições para 2 instâncias do Consumer).
+      * Exemplo: 1 Tópico com 3 parições e 3 instâncias de um mesmo Consumer apontando para este Tópico, cada instância do Consumer vai apontar para uma partição do Tópico, mas se cair uma instância do Consumer ele vai ficar com 2 instâncias e nessa hora acontece o rebalancemento onde uma das instâncias vai apontar para duas partições e a outra instância para uma partição do Tópico(3 partições para 2 instâncias do Consumer).
     * É possível fazer o rebalanceamento com mais de um Broker dentro do mesmo Cluster.
 
 ## Instalação Local
@@ -134,7 +134,7 @@
   * Exemplo: ```properties.setProperty(ProducerConfig.AKS_CONFIG, "all");```
 
 ## CorrelationId
-* Serve para rastrear os recods(mensagens) que são trafegadas, exemplo:
+* Serve para rastrear os recodrs(mensagens) que são trafegadas, exemplo:
   * Criar uma classe Message genérica com um ```CorrelationId id``` e um payload ```Object payload```
   * CorrelationId classe criada que contém o id, este id vai ser gerado através de um método criado dentro da própria classe concatenando o prórprio id com o nome da classe que gerou este id + o novo id gerado.
 
