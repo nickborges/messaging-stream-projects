@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    host: 192.168.15.7
+    port: 5672
+    username: guest
+    password: guest
+order:
+  exchange: order.topic
+  route: OrderTopic
