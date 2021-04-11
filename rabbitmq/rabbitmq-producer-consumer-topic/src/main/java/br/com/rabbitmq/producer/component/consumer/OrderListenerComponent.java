@@ -12,11 +12,13 @@ public class OrderListenerComponent {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    private static final String ORDER_QUEUE = "OrderQueue";
+    @Value("${queue.order}")
+    private String orderQueue;
 
-    @RabbitListener(queues = ORDER_QUEUE)
+    @RabbitListener(queues = "${queue.order}")
     public void consumer(String message){
-        System.out.println("Queue: "+ ORDER_QUEUE + " | Recived Message: " + message);
+        System.out.println("Queue: "+ orderQueue + " | Recived Message: " + message);
+        //throw new RuntimeException("Erroooo!!!");
     }
 
 }

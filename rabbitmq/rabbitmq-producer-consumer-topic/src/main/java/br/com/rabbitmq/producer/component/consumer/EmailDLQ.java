@@ -11,15 +11,15 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class OrderDLQ {
+public class EmailDLQ {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${deadletter.queue.order}")
+    @Value("${deadletter.queue.email}")
     private String queueDLQ;
 
-    @RabbitListener(queues = "${deadletter.queue.order}")
+    @RabbitListener(queues = "${deadletter.queue.email}")
     public void consumer(String message, Message message2) {
         Map<String, Object> headers = message2.getMessageProperties().getHeaders();
         List<Map<String, ?>> xDeath = (List<Map<String, ?>>) headers.get("x-death");

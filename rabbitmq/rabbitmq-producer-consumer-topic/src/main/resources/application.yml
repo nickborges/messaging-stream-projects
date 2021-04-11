@@ -12,6 +12,18 @@ spring:
           max-attempts: 3
           max-interval: 5s
           multiplier: 2
-order:
-  exchange: order.topic
+
+exchange-topic:
+  order: order.topic
   route: OrderTopic
+queue:
+  order: OrderQueue
+  email: EmailQueue
+deadletter:
+  queue:
+    order: OrderDQL
+    email: EmailDLQ
+  exchange: order.deadletter
+  route:
+    order: OrderDeadLetter
+    email: EmailDeadLetter

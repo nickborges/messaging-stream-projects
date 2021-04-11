@@ -11,10 +11,10 @@ public class ProducerComponent {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${order.exchange}")
+    @Value("${exchange-topic.order}")
     private String orderExchange;
 
-    @Value("${order.route}")
+    @Value("${exchange-topic.route}")
     private String routeQueue;
 
     public void producer(String message){
